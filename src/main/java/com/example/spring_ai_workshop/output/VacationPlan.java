@@ -20,6 +20,7 @@ public class VacationPlan {
                 .content();
     }
 
+    // gives json output
     @GetMapping("/vacation/structured")
     public Itinerary structured() {
         return chatClient.prompt()
