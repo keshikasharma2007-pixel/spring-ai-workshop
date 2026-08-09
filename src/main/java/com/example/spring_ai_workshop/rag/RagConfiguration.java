@@ -1,5 +1,6 @@
 package com.example.spring_ai_workshop.rag;
 
+import org.antlr.runtime.Token;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.reader.TextReader;
 import org.springframework.ai.transformer.splitter.TextSplitter;
@@ -19,6 +20,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+// had to download embedding model mxbai-embed-large
 @Configuration
 public class RagConfiguration {
 
@@ -26,11 +28,15 @@ public class RagConfiguration {
 
     private String vectorStoreName = "vectorstore.json";
 
-    @Value("/classpath:data/models.json")
+    // set up a resource
+    @Value("classpath:data/models.json")
     private Resource models;
 
+    // creates a vectorstore Bean
     @Bean
+    // embedding model: mxbai-embed-large
     SimpleVectorStore simpleVectorStore(EmbeddingModel embeddingModel) {
+        // locally, not using database
         var simpleVectorStore = SimpleVectorStore.builder(embeddingModel).build();
         var vectorStoreFile = getVectorStoreFile();
         if (vectorStoreFile.exists()) {
@@ -41,11 +47,14 @@ public class RagConfiguration {
             TextReader textReader = new TextReader(models);
             textReader.getCustomMetadata().put("filename", "models.txt");
             List<Document> documents = textReader.get();
+            // TokenTextSplitter chunks the documents
             TextSplitter textSplitter = new TokenTextSplitter();
             List<Document> splitDocuments = textSplitter.apply(documents);
+
             simpleVectorStore.add(splitDocuments);
             simpleVectorStore.save(vectorStoreFile);
         }
+        // whether we load or create
         return simpleVectorStore;
     }
 
