@@ -19,7 +19,7 @@ public class ChatController {
     public String chat() {
         return chatClient.prompt()
                 //prompt sent to LLM
-                .user("Tell me an interesting fact about Java")
+                .user("Tell me an interesting fact about Java!")
                 // blocking call - one time interaction
                 .call()
                 // string response from LLM
