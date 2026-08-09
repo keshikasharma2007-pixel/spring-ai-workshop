@@ -30,11 +30,11 @@ public class ModelComparison {
                 If you are asked about up to date language models and their context windows, here is
                 some information to help you with your response:
                 [
-                    {"company": "OpenAI",   "model": "GPT-4o",  "context_window_size": 128000},
-                    {"company": "OpenAI",   "model": "o1-preview",  "context_window_size": 128000},
+                    {"company": "OpenAI",   "model": "GPT-5.6",  "context_window_size": 1000000},
+                    {"company": "OpenAI",   "model": "GPT-5.5",  "context_window_size": 1000000},
                     
-                    {"company": "Anthropic",   "model": "Claude Opus 4",  "context_window_size": 200000},
-                    {"company": "Anthropic",   "model": "Claude Sonnet 4",  "context_window_size": 200000}
+                    {"company": "Anthropic",   "model": "Claude Fable 5",  "context_window_size": 1000000},
+                    {"company": "Anthropic",   "model": "Claude Mythos 5",  "context_window_size": 1000000}
                 ]
                 """;
 
