@@ -1,0 +1,14 @@
+Retrieval Augmentation Generation
+technique used in AI to improve the answers of an LLM
+
+- stuffing prompt with only relevant info that is requested
+Stage 1: Document Ingestion
+    - takes data, reads it, and chunks it up
+    - embeds the chunked data into vector database
+        - stores vectors and math
+Stage 2: RAG
+    - takes prompt and finds all the data in the vector database that will help answer the prompt
+    - turns prompt into embedding and then searches vector database
+        - the closer the content, the closer the vectors
+
+AI responds with its own info + info from the vector database
