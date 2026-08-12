@@ -1,0 +1,17 @@
+Tools/Function Calling
+    - provides additional context
+    - LLM interacts with tools/APIs that changes its capabilities
+
+Information Retrieval
+    - retrieve info from external sources (database, web service, file system, web search engine)
+    - can be used in RAG scenarios
+Taking Action
+    - automates tasks (send email, create new record in database, trigger a workflow)
+
+Tool Definition in Chat Request -> Dispatch Tool Call Requests -> AI Model -> Dispatch Tool ->
+Dispatch Tool -> AI Model -> Dispatch Tool -> Chat Response
+
+AI has problems with selecting the right tool for the task at hand
+
+
+had to use llama3.1 since llama3 does not support @Tool
